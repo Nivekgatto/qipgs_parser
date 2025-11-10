@@ -16,9 +16,9 @@ CONF_LOAD_PERCENT = "load_percent"
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(QPIGSSensor),
     cv.Required(CONF_UART_ID): cv.use_id(uart.UARTComponent),
-    cv.Optional(CONF_AC_INPUT_VOLTAGE): sensor.sensor_schema(UNIT_VOLT, ICON_FLASH, 1),
-    cv.Optional(CONF_AC_OUTPUT_VOLTAGE): sensor.sensor_schema(UNIT_VOLT, ICON_FLASH, 1),
-    cv.Optional(CONF_LOAD_PERCENT): sensor.sensor_schema(UNIT_PERCENT, ICON_PERCENT, 1),
+    cv.Optional(CONF_AC_INPUT_VOLTAGE): sensor.sensor_schema(unit=UNIT_VOLT, icon=ICON_FLASH, accuracy_decimals=1),
+    cv.Optional(CONF_AC_OUTPUT_VOLTAGE): sensor.sensor_schema(unit=UNIT_VOLT, icon=ICON_FLASH, accuracy_decimals=1),
+    cv.Optional(CONF_LOAD_PERCENT): sensor.sensor_schema(unit=UNIT_PERCENT, icon=ICON_PERCENT, accuracy_decimals=1),
 })
 
 async def to_code(config):
@@ -38,3 +38,4 @@ async def to_code(config):
     if CONF_LOAD_PERCENT in config:
         sens = await sensor.new_sensor(config[CONF_LOAD_PERCENT])
         cg.add(var.set_load_percent_sensor(sens))
+
