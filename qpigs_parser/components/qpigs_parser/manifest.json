@@ -1,9 +1,0 @@
-{
-  "domain": "qpigs_parser",
-  "name": "QPIGS Parser",
-  "version": "1.0",
-  "documentation": "https://github.com/Nivekgatto/qpigs_parser",
-  "requirements": [],
-  "dependencies": [],
-  "codeowners": ["@Nivekgatto"]
-}
